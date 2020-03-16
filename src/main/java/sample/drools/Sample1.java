@@ -12,13 +12,19 @@ import java.math.BigDecimal;
 
 public class Sample1 {
     public static void main(String[] args){
+        // กำหนดที่อยู่ของ File
         String ruleFle = "/sample/drools/rule/sample1.drl";
-
+        // Iniะ Sample
         Sample1 sample = new Sample1();
+        // สร้าง KIE Session ที่จะใช้ในการ Compile
         KieSession kie = sample.loadRule(ruleFle);
+
+        // สร้าง Fact
         Product gold = sample.createSampleProduct("gold");
         Product diamond = sample.createSampleProduct("diamond");
         Product bitcoin = sample.createSampleProduct("bitcoin");
+
+        // สั่ง Execute เพื่อจับเอา Fact และ Rule มา Match กันเพื่อให้ได้ Result
         sample.execute(gold,kie);
         sample.execute(diamond,kie);
         sample.execute(bitcoin,kie);
